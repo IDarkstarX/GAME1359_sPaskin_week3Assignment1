@@ -9,6 +9,7 @@ public class mover : MonoBehaviour {
     [SerializeField]
     float jumpSpeed = 100;
 
+
     Rigidbody rb;
 
     bool canJump = false;
@@ -27,6 +28,7 @@ public class mover : MonoBehaviour {
 
     void FixedUpdate()
     {
+        canJump = false;
 
         Ray r = new Ray(transform.position, Vector3.down);
 
@@ -40,9 +42,6 @@ public class mover : MonoBehaviour {
             {
                 canJump = true;
                 
-            } else
-            {
-                canJump = false;
             }
             Debug.Log(hit.transform.name);
         }
@@ -64,6 +63,5 @@ public class mover : MonoBehaviour {
     void Jump() {
 
         rb.velocity = new Vector3(rb.velocity.x, jumpSpeed, rb.velocity.y);
-        canJump = false;
     }
 }
