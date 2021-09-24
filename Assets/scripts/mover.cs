@@ -8,7 +8,8 @@ public class mover : MonoBehaviour {
     float moveSpeed = 1;
     [SerializeField]
     float jumpSpeed = 100;
-
+    [SerializeField]
+    float gravity;
 
     Rigidbody rb;
 
@@ -23,11 +24,8 @@ public class mover : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        
-    }
+        rb.AddForce(Vector3.down * gravity * rb.mass);
 
-    void FixedUpdate()
-    {
         canJump = false;
 
         Ray r = new Ray(transform.position, Vector3.down);
@@ -59,6 +57,12 @@ public class mover : MonoBehaviour {
 
             Jump();
         }
+    }
+
+    void FixedUpdate()
+    {
+
+        
     }
     void Jump() {
 
